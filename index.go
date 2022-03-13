@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/signal"
 	"repeater/logger"
+	"repeater/router"
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
@@ -13,7 +14,7 @@ import (
 var log = logger.Logger
 
 func main() {
-	err := godotenv.Load("TOKEN")
+	err := godotenv.Load("./.env")
 	if err != nil {
 		log.Fatalln(err)
 	}
