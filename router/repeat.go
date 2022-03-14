@@ -39,7 +39,7 @@ func StartRepeat(w *discordgo.Session, r *discordgo.MessageCreate) {
 		return
 	}
 
-	cmd := strings.Join(msg[1:], " ")
+	cmd := strings.Join(msg[3:], "")
 	data.ChannelId = r.ChannelID
 	data.Message = cmd
 	data.Time = time.Now().Format("2006-01-02 15:04:05")
