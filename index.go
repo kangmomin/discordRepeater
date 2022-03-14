@@ -1,11 +1,16 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"os"
 	"os/signal"
 	"repeater/logger"
 	"repeater/router"
+	"repeater/typies"
+	"strconv"
 	"syscall"
+	"time"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
@@ -29,6 +34,27 @@ func main() {
 	defer c.Close()
 
 	c.AddHandler(router.Route)
+
+	go func() {
+		for range time.Tick(time.Second * 3) {
+			byteData, err := ioutil.ReadFile("./data/user.json")
+			if err != nil {
+				log.Println(err)
+				return
+			}
+
+			var data []typies.RepeatData
+			err = json.Unmarshal(byteData, &data)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+
+			for i := 0; i < len(data); i++ {
+				c.ChannelMessageSend(data[i].ChannelId, data[i].Message+"["+strconv.Itoa(data[i].Id)+"]")
+			}
+		}
+	}()
 
 	c.Identify.Intents = discordgo.IntentGuildMessages
 
