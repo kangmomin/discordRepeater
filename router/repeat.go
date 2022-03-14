@@ -76,6 +76,12 @@ func StopRepeat(w *discordgo.Session, r *discordgo.MessageCreate) {
 	}
 
 	cmd := strings.Split(r.Content, " ")
+
+	if len(cmd) < 2 {
+		w.ChannelMessageSend(r.ChannelID, "id값이 잘못되었습니다.")
+		return
+	}
+
 	id, err := strconv.Atoi(cmd[1])
 
 	if err != nil {
