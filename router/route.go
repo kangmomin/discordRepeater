@@ -7,6 +7,9 @@ import (
 )
 
 func Route(w *discordgo.Session, r *discordgo.MessageCreate) {
+	if len(r.Content) < 1 {
+		return
+	}
 	msg := strings.Split(r.Content, "")
 
 	if msg[0] != "$" {
