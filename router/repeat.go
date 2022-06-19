@@ -3,7 +3,7 @@ package router
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
+	"repeater/logger"
 	"repeater/typies"
 	"repeater/util"
 	"strconv"
@@ -12,6 +12,8 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 )
+
+var log = logger.Logger
 
 func StartRepeat(w *discordgo.Session, r *discordgo.MessageCreate) {
 	var repeater []typies.RepeatData
