@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/signal"
@@ -21,7 +22,8 @@ var log = logger.Logger
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
+		return
 	}
 
 	sc := make(chan os.Signal, 1)
