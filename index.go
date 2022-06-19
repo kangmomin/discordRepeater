@@ -19,7 +19,7 @@ import (
 var log = logger.Logger
 
 func main() {
-	err := godotenv.Load("./.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatalln(err)
 	}
