@@ -65,7 +65,7 @@ func main() {
 }
 
 func setActivity(s *discordgo.Session) {
-	err := s.UpdateListeningStatus("#설명")
+	err := s.UpdateListeningStatus("$설명")
 	if err != nil {
 		panic(err)
 	}
