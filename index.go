@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
+	"github.com/lemon-mint/godotenv"
 )
 
 var log = logger.Logger
