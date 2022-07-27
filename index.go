@@ -53,7 +53,6 @@ func main() {
 		}
 	}()
 
-	c.ChannelMessageSend("998554373598748756", "@everyone  9시 입니다. 모여주세요.")
 	go func() {
 		for range time.Tick(time.Hour * 1) {
 			if time.Hour == 21 {
