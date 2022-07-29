@@ -23,6 +23,6 @@ func getLogger() *logger {
 
 func setLogger() *logger {
 	return &logger{
-		Logger: log.New(os.Stderr, "repeater: ", log.Ldate|log.Ltime|log.Lshortfile),
+		Logger: log.New(os.Stderr, "repeater: ", log.Ldate|log.Ltime),
 	}
 }
