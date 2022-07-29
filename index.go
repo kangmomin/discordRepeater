@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/signal"
@@ -55,7 +56,9 @@ func main() {
 
 	go func() {
 		for range time.Tick(time.Minute * 1) {
-			if time.Now().Hour() == 21 {
+			if time.Now().Hour() == 21 && time.Now().Minute() == 0 {
+				fmt.Println(time.Now().Hour())
+				fmt.Println(time.Now().Hour() == 21)
 				_, err := c.ChannelMessageSend("998554373598748756", "@everyone  9시 입니다. 모여주세요.")
 				if err != nil {
 					log.Println(err)
